@@ -14,7 +14,8 @@ permissions:
 
 concurrency:
   group: smoke-${{ github.ref }}
-  cancel-in-progress: true
+  # Only superseded PR runs are cancelled; push, schedule and manual runs on main always finish.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   changelog:
