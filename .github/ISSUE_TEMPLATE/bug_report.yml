@@ -1,0 +1,51 @@
+name: Template bug
+description: The Railway template deploys or behaves incorrectly (build, healthcheck, variables, networking, docs).
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for problems with this Railway template. Crawl4AI bugs belong upstream: https://github.com/unclecode/crawl4ai/issues
+        Never paste your `CRAWL4AI_API_TOKEN`, `SECRET_KEY`, or LLM API keys.
+  - type: input
+    id: template-version
+    attributes:
+      label: Template version
+      description: The newest version heading in CHANGELOG.md at the time you deployed, or the image line from the Dockerfile.
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Where does it fail?
+      options:
+        - Build
+        - Healthcheck / deploy never becomes active
+        - Runtime (requests fail after deploy)
+        - Documentation is wrong
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Deploy or build logs
+      description: Relevant lines from the Railway deploy or build logs. Remove secrets first.
+      render: text
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: The service has `CRAWL4AI_API_TOKEN` set to a non-empty value.
+          required: true
+        - label: I removed all secrets from this report.
+          required: true

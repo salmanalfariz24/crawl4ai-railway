@@ -1,0 +1,42 @@
+name: Smoke test
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    # Mondays 01:00 UTC = 08:00 Asia/Jakarta, one hour after the Dependabot run.
+    - cron: "0 1 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  changelog:
+    name: changelog
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: CHANGELOG records the pinned image
+        run: ./scripts/check-changelog.sh
+
+  smoke:
+    name: smoke
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Build and smoke-test the image
+        run: ./scripts/smoke-test.sh

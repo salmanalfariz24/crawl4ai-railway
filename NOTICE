@@ -1,0 +1,11 @@
+crawl4ai-railway
+Copyright 2026 Salman AlFariz
+
+This repository contains Railway template configuration for Crawl4AI. It does
+not contain Crawl4AI source code; the Dockerfile references the official
+Crawl4AI image published on Docker Hub as unclecode/crawl4ai.
+
+This product includes software developed by UncleCode (https://x.com/unclecode) as part of the Crawl4AI project (https://github.com/unclecode/crawl4ai).
+
+Crawl4AI is licensed under the Apache License 2.0 with an additional
+attribution requirement. See https://github.com/unclecode/crawl4ai/blob/v0.9.4/LICENSE
