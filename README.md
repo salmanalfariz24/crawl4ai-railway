@@ -1,4 +1,4 @@
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/QoUMOW?utm_medium=integration&utm_source=button&utm_campaign=crawl4ai)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/crawl4ai-1?utm_medium=integration&utm_source=button&utm_campaign=crawl4ai)
 
 <!-- railway-overview:start -->
 
